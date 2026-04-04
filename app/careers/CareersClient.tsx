@@ -21,8 +21,56 @@ export default function CareersClient() {
       ?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // ✅ STRICT FILE VALIDATION
+  const handleFileChange = (e: any) => {
+    const selectedFile = e.target.files?.[0];
+
+    if (!selectedFile) return;
+
+    const fileName = selectedFile.name.toLowerCase();
+
+    const allowedExtensions = [".pdf", ".doc", ".docx"];
+
+    const isValidExtension = allowedExtensions.some((ext) =>
+      fileName.endsWith(ext)
+    );
+
+    if (!isValidExtension) {
+      setStatus({
+        type: "error",
+        message: "Only PDF, DOC, DOCX files are allowed.",
+      });
+      e.target.value = "";
+      setFile(null);
+      return;
+    }
+
+    const MAX_SIZE = 2 * 1024 * 1024; // 2MB
+
+    if (selectedFile.size > MAX_SIZE) {
+      setStatus({
+        type: "error",
+        message: "File size must be less than 2MB.",
+      });
+      e.target.value = "";
+      setFile(null);
+      return;
+    }
+
+    setFile(selectedFile);
+    setStatus({ type: "", message: "" });
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    if (!file) {
+      setStatus({
+        type: "error",
+        message: "Please upload your resume.",
+      });
+      return;
+    }
 
     setLoading(true);
     setStatus({ type: "", message: "" });
@@ -62,7 +110,6 @@ export default function CareersClient() {
 
     setLoading(false);
 
-    // Auto-clear after 5 sec
     setTimeout(() => {
       setStatus({ type: "", message: "" });
     }, 5000);
@@ -139,7 +186,7 @@ export default function CareersClient() {
               Apply Now
             </h2>
 
-            {/* ✅ STATUS MESSAGE */}
+            {/* STATUS MESSAGE */}
             {status.message && (
               <div
                 className={`mb-4 p-3 rounded text-sm ${
@@ -206,7 +253,7 @@ export default function CareersClient() {
                 type="file"
                 name="resume"
                 accept=".pdf,.doc,.docx"
-                onChange={(e) => setFile(e.target.files?.[0] || null)}
+                onChange={handleFileChange}
                 required
               />
 
@@ -228,6 +275,7 @@ export default function CareersClient() {
         </div>
 
       </section>
+
     </main>
   );
 }
