@@ -7,7 +7,6 @@ export default function CareersClient() {
   const [phone, setPhone] = useState("");
   const [file, setFile] = useState<File | null>(null);
 
-  // Scroll + auto select
   const handleApplyClick = (position: string) => {
     setSelectedPosition(position);
     document
@@ -44,32 +43,23 @@ export default function CareersClient() {
         {/* LEFT SIDE */}
         <div className="md:col-span-2 space-y-12">
 
-          {/* Working With Us */}
           <div>
             <h2 className="text-2xl font-semibold mb-4">
               Working With Us
             </h2>
 
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600">
               Abacus Technocrats Pvt. Ltd. offers opportunities for professionals
-              seeking to work on technically driven infrastructure projects within
-              a structured engineering environment.
-            </p>
-
-            <p className="mt-4 text-gray-600 leading-relaxed">
-              Our teams collaborate with clients, consultants, and contractors
-              across planning, coordination, and execution stages.
+              seeking to work on infrastructure projects.
             </p>
           </div>
 
-          {/* Current Openings */}
           <div>
             <h2 className="text-2xl font-semibold mb-6">
               Current Openings
             </h2>
 
             <div className="grid gap-6">
-
               {[
                 "Planning Engineer",
                 "BIM / Revit Modeller",
@@ -87,7 +77,6 @@ export default function CareersClient() {
                   </button>
                 </div>
               ))}
-
             </div>
           </div>
 
@@ -104,9 +93,14 @@ export default function CareersClient() {
               Apply Now
             </h2>
 
-            <form className="grid gap-4 text-sm">
+            {/* ✅ FIXED FORM */}
+            <form
+              action="/api/careers"
+              method="POST"
+              encType="multipart/form-data"
+              className="grid gap-4 text-sm"
+            >
 
-              {/* NAME */}
               <input
                 name="name"
                 placeholder="Full Name"
@@ -114,7 +108,6 @@ export default function CareersClient() {
                 required
               />
 
-              {/* EMAIL */}
               <input
                 type="email"
                 name="email"
@@ -123,7 +116,6 @@ export default function CareersClient() {
                 required
               />
 
-              {/* PHONE */}
               <input
                 name="phone"
                 placeholder="Phone"
@@ -133,7 +125,6 @@ export default function CareersClient() {
                 required
               />
 
-              {/* DROPDOWN */}
               <select
                 name="position"
                 value={selectedPosition}
@@ -173,23 +164,20 @@ export default function CareersClient() {
                 <option>Other</option>
               </select>
 
-              {/* FILE */}
               <input
                 type="file"
                 name="resume"
                 accept=".pdf,.doc,.docx"
                 onChange={(e) => setFile(e.target.files?.[0] || null)}
-                className="text-sm"
                 required
               />
 
-              {/* SUBMIT BUTTON */}
               <button
                 type="submit"
                 disabled={!phone || phone.length < 10 || !file}
-                className={`py-3 rounded text-white transition ${
+                className={`py-3 rounded text-white ${
                   phone && phone.length >= 10 && file
-                    ? "bg-black hover:bg-gray-800"
+                    ? "bg-black"
                     : "bg-gray-400 cursor-not-allowed"
                 }`}
               >
@@ -197,6 +185,7 @@ export default function CareersClient() {
               </button>
 
             </form>
+
           </div>
 
         </div>
