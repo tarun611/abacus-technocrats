@@ -1,4 +1,59 @@
+"use client";
+
+import { useState } from "react";
+
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e: any) => {
+    setFormData({
+      ...formData,
+      [e.target.placeholder.toLowerCase().replace("your ", "")]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: "-", // optional for now
+          message: formData.message + " | Subject: " + formData.subject,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus("Message sent successfully!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setStatus("Failed to send message.");
+      }
+    } catch (error) {
+      setStatus("Error occurred. Try again.");
+    }
+
+    setLoading(false);
+  };
+
   return (
     <main className="pt-24">
 
@@ -50,38 +105,55 @@ export default function ContactPage() {
               Send a Message
             </h2>
 
-            <form className="mt-6 space-y-4">
+            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
 
               <input
                 type="text"
                 placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full border p-3 rounded-md"
+                required
               />
 
               <input
                 type="email"
                 placeholder="Your Email"
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full border p-3 rounded-md"
+                required
               />
 
               <input
                 type="text"
                 placeholder="Subject"
+                value={formData.subject}
+                onChange={handleChange}
                 className="w-full border p-3 rounded-md"
+                required
               />
 
               <textarea
                 placeholder="Your Message"
                 rows={5}
+                value={formData.message}
+                onChange={handleChange}
                 className="w-full border p-3 rounded-md"
+                required
               />
 
               <button
                 type="submit"
+                disabled={loading}
                 className="bg-[#0A1F44] text-white px-6 py-3 rounded-md hover:bg-[#D4AF37] transition"
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </button>
+
+              {status && (
+                <p className="text-sm text-gray-600">{status}</p>
+              )}
 
             </form>
 
@@ -90,7 +162,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* MAP (OPTIONAL) */}
+      {/* MAP */}
       <section className="h-[400px]">
         <iframe
           src="https://www.google.com/maps?q=Gulbai+Tekra+Ahmedabad&output=embed"

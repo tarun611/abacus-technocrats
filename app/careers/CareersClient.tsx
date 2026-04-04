@@ -6,12 +6,45 @@ export default function CareersClient() {
   const [selectedPosition, setSelectedPosition] = useState("");
   const [phone, setPhone] = useState("");
   const [file, setFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleApplyClick = (position: string) => {
     setSelectedPosition(position);
     document
       .getElementById("apply-form")
       ?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("Application submitted successfully!");
+        e.currentTarget.reset();
+        setSelectedPosition("");
+        setPhone("");
+        setFile(null);
+      } else {
+        // ✅ SHOW REAL ERROR
+        alert("Error: " + data.error);
+      }
+    } catch (error: any) {
+      alert("Error: " + error.message);
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -93,13 +126,7 @@ export default function CareersClient() {
               Apply Now
             </h2>
 
-            {/* ✅ FIXED FORM */}
-            <form
-              action="/api/careers"
-              method="POST"
-              encType="multipart/form-data"
-              className="grid gap-4 text-sm"
-            >
+            <form onSubmit={handleSubmit} className="grid gap-4 text-sm">
 
               <input
                 name="name"
@@ -174,14 +201,14 @@ export default function CareersClient() {
 
               <button
                 type="submit"
-                disabled={!phone || phone.length < 10 || !file}
+                disabled={!phone || phone.length < 10 || !file || loading}
                 className={`py-3 rounded text-white ${
-                  phone && phone.length >= 10 && file
+                  phone && phone.length >= 10 && file && !loading
                     ? "bg-black"
                     : "bg-gray-400 cursor-not-allowed"
                 }`}
               >
-                Submit Application
+                {loading ? "Submitting..." : "Submit Application"}
               </button>
 
             </form>
