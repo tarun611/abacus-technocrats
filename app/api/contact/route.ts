@@ -1,10 +1,11 @@
 import nodemailer from "nodemailer";
+import { connectDB } from "@/lib/mongodb";
 
 export async function POST(req: Request) {
   try {
     const contentType = req.headers.get("content-type");
 
-    // ✅ CHECK ENV VARIABLES
+    // ✅ ENV CHECK
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !process.env.EMAIL_TO) {
       return Response.json(
         { success: false, error: "Email configuration missing" },
@@ -12,7 +13,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // ✅ CREATE TRANSPORTER (COMMON)
+    // ✅ MAIL TRANSPORTER
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -21,9 +22,9 @@ export async function POST(req: Request) {
       },
     });
 
-    // =========================================================
-    // ✅ CASE 1: CONTACT FORM (JSON)
-    // =========================================================
+    // =====================================================
+    // ✅ CONTACT FORM (JSON)
+    // =====================================================
     if (contentType?.includes("application/json")) {
       const body = await req.json();
 
@@ -36,6 +37,18 @@ export async function POST(req: Request) {
         );
       }
 
+      // ✅ SAVE TO DB
+      const db = await connectDB();
+
+      await db.collection("contacts").insertOne({
+        name,
+        email,
+        phone,
+        message,
+        createdAt: new Date(),
+      });
+
+      // ✅ SEND EMAIL
       await transporter.sendMail({
         from: `"Contact Form" <${process.env.EMAIL_USER}>`,
         to: process.env.EMAIL_TO,
@@ -52,9 +65,9 @@ export async function POST(req: Request) {
       return Response.json({ success: true });
     }
 
-    // =========================================================
-    // ✅ CASE 2: CAREERS FORM (FORMDATA + FILE)
-    // =========================================================
+    // =====================================================
+    // ✅ CAREERS FORM (FORMDATA)
+    // =====================================================
     const formData = await req.formData();
 
     const name = formData.get("name")?.toString();
@@ -72,6 +85,19 @@ export async function POST(req: Request) {
 
     const buffer = Buffer.from(await resume.arrayBuffer());
 
+    // ✅ SAVE TO DB
+    const db = await connectDB();
+
+    await db.collection("applications").insertOne({
+      name,
+      email,
+      phone,
+      position,
+      resumeName: resume.name,
+      createdAt: new Date(),
+    });
+
+    // ✅ SEND EMAIL WITH ATTACHMENT
     await transporter.sendMail({
       from: `"Careers Form" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
@@ -94,7 +120,7 @@ export async function POST(req: Request) {
     return Response.json({ success: true });
 
   } catch (error: any) {
-    console.error("EMAIL ERROR:", error);
+    console.error("API ERROR:", error);
 
     return Response.json(
       {
