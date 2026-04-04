@@ -6,24 +6,28 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    phone: "",
     message: "",
   });
 
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | "";
+    message: string;
+  }>({ type: "", message: "" });
 
   const handleChange = (e: any) => {
     setFormData({
       ...formData,
-      [e.target.placeholder.toLowerCase().replace("your ", "")]: e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
     setLoading(true);
-    setStatus("");
+    setStatus({ type: "", message: "" });
 
     try {
       const res = await fetch("/api/contact", {
@@ -31,27 +35,41 @@ export default function ContactPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: "-", // optional for now
-          message: formData.message + " | Subject: " + formData.subject,
-        }),
+        body: JSON.stringify(formData),
       });
 
       const data = await res.json();
 
       if (data.success) {
-        setStatus("Message sent successfully!");
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        setStatus({
+          type: "success",
+          message: "Message sent successfully!",
+        });
+
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
       } else {
-        setStatus("Failed to send message.");
+        setStatus({
+          type: "error",
+          message: data.error || "Something went wrong",
+        });
       }
-    } catch (error) {
-      setStatus("Error occurred. Try again.");
+    } catch (error: any) {
+      setStatus({
+        type: "error",
+        message: error.message || "Network error",
+      });
     }
 
     setLoading(false);
+
+    setTimeout(() => {
+      setStatus({ type: "", message: "" });
+    }, 5000);
   };
 
   return (
@@ -67,13 +85,12 @@ export default function ContactPage() {
         </p>
       </section>
 
-      {/* CONTACT INFO + FORM */}
+      {/* CONTENT */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
 
-          {/* LEFT INFO */}
+          {/* LEFT */}
           <div>
-
             <h2 className="text-2xl font-semibold text-[#0A1F44]">
               Office Address
             </h2>
@@ -93,22 +110,34 @@ export default function ContactPage() {
             <p className="mt-4 text-gray-600">
               📞 +91 79 4002 0046<br />
               📞 +91 79 2642 2168<br />
-              ✉️ abacus.epc@gmail.com
+              ✉️ career.abacustechno@gmail.com
             </p>
-
           </div>
 
-          {/* RIGHT FORM */}
+          {/* FORM */}
           <div>
-
             <h2 className="text-2xl font-semibold text-[#0A1F44]">
               Send a Message
             </h2>
+
+            {/* STATUS */}
+            {status.message && (
+              <div
+                className={`mt-4 p-3 rounded text-sm ${
+                  status.type === "success"
+                    ? "bg-green-100 text-green-700"
+                    : "bg-red-100 text-red-700"
+                }`}
+              >
+                {status.message}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-4">
 
               <input
                 type="text"
+                name="name"
                 placeholder="Your Name"
                 value={formData.name}
                 onChange={handleChange}
@@ -118,6 +147,7 @@ export default function ContactPage() {
 
               <input
                 type="email"
+                name="email"
                 placeholder="Your Email"
                 value={formData.email}
                 onChange={handleChange}
@@ -127,14 +157,16 @@ export default function ContactPage() {
 
               <input
                 type="text"
-                placeholder="Subject"
-                value={formData.subject}
+                name="phone"
+                placeholder="Phone Number"
+                value={formData.phone}
                 onChange={handleChange}
                 className="w-full border p-3 rounded-md"
                 required
               />
 
               <textarea
+                name="message"
                 placeholder="Your Message"
                 rows={5}
                 value={formData.message}
@@ -150,10 +182,6 @@ export default function ContactPage() {
               >
                 {loading ? "Sending..." : "Send Message"}
               </button>
-
-              {status && (
-                <p className="text-sm text-gray-600">{status}</p>
-              )}
 
             </form>
 
