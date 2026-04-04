@@ -1,12 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function CareersClient() {
   const [selectedPosition, setSelectedPosition] = useState("");
   const [phone, setPhone] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | "";
+    message: string;
+  }>({ type: "", message: "" });
+
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleApplyClick = (position: string) => {
     setSelectedPosition(position);
@@ -19,6 +25,7 @@ export default function CareersClient() {
     e.preventDefault();
 
     setLoading(true);
+    setStatus({ type: "", message: "" });
 
     const formData = new FormData(e.currentTarget);
 
@@ -31,20 +38,34 @@ export default function CareersClient() {
       const data = await res.json();
 
       if (data.success) {
-        alert("Application submitted successfully!");
-        e.currentTarget.reset();
+        setStatus({
+          type: "success",
+          message: "Application submitted successfully!",
+        });
+
+        formRef.current?.reset(); // ✅ SAFE RESET
         setSelectedPosition("");
         setPhone("");
         setFile(null);
       } else {
-        // ✅ SHOW REAL ERROR
-        alert("Error: " + data.error);
+        setStatus({
+          type: "error",
+          message: data.error || "Something went wrong",
+        });
       }
     } catch (error: any) {
-      alert("Error: " + error.message);
+      setStatus({
+        type: "error",
+        message: error.message || "Network error",
+      });
     }
 
     setLoading(false);
+
+    // Auto-clear after 5 sec
+    setTimeout(() => {
+      setStatus({ type: "", message: "" });
+    }, 5000);
   };
 
   return (
@@ -61,26 +82,19 @@ export default function CareersClient() {
             Join a professional engineering and consultancy environment focused
             on technical excellence and structured delivery.
           </p>
-
-          <ul className="mt-6 text-gray-300 text-sm space-y-1">
-            <li>• Work on real infrastructure projects</li>
-            <li>• Collaborative engineering environment</li>
-            <li>• Growth-driven roles</li>
-          </ul>
         </div>
       </section>
 
       {/* MAIN GRID */}
       <section className="py-16 px-6 max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
 
-        {/* LEFT SIDE */}
+        {/* LEFT */}
         <div className="md:col-span-2 space-y-12">
 
           <div>
             <h2 className="text-2xl font-semibold mb-4">
               Working With Us
             </h2>
-
             <p className="text-gray-600">
               Abacus Technocrats Pvt. Ltd. offers opportunities for professionals
               seeking to work on infrastructure projects.
@@ -115,9 +129,8 @@ export default function CareersClient() {
 
         </div>
 
-        {/* RIGHT SIDE FORM */}
+        {/* FORM */}
         <div className="md:col-span-1">
-
           <div
             id="apply-form"
             className="bg-white border rounded-xl p-6 sticky top-24"
@@ -126,7 +139,20 @@ export default function CareersClient() {
               Apply Now
             </h2>
 
-            <form onSubmit={handleSubmit} className="grid gap-4 text-sm">
+            {/* ✅ STATUS MESSAGE */}
+            {status.message && (
+              <div
+                className={`mb-4 p-3 rounded text-sm ${
+                  status.type === "success"
+                    ? "bg-green-100 text-green-700"
+                    : "bg-red-100 text-red-700"
+                }`}
+              >
+                {status.message}
+              </div>
+            )}
+
+            <form ref={formRef} onSubmit={handleSubmit} className="grid gap-4 text-sm">
 
               <input
                 name="name"
@@ -161,31 +187,16 @@ export default function CareersClient() {
               >
                 <option value="">Select Position</option>
 
-                <optgroup label="Architecture">
-                  <option>Project Architect</option>
-                  <option>Senior Architect</option>
-                  <option>Junior Architect</option>
-                </optgroup>
-
                 <optgroup label="Engineering">
-                  <option>Civil Engineer</option>
-                  <option>Structural Engineer</option>
-                  <option>Electrical Engineer</option>
-                  <option>ELV Engineer</option>
-                  <option>HVAC Engineer</option>
-                  <option>Fire Engineer</option>
+                  <option>Planning Engineer</option>
+                  <option>BIM / Revit Modeller</option>
+                  <option>Site / PMC Engineer</option>
+                  <option>Tendering Engineer</option>
                 </optgroup>
 
                 <optgroup label="Drafting">
                   <option>Draftsman - Structure</option>
                   <option>Draftsman - Architecture</option>
-                  <option>Draftsman - Civil</option>
-                  <option>Draftsman - MEP</option>
-                </optgroup>
-
-                <optgroup label="Administration">
-                  <option>Accountant</option>
-                  <option>HR</option>
                 </optgroup>
 
                 <option>Other</option>
@@ -204,7 +215,7 @@ export default function CareersClient() {
                 disabled={!phone || phone.length < 10 || !file || loading}
                 className={`py-3 rounded text-white ${
                   phone && phone.length >= 10 && file && !loading
-                    ? "bg-black"
+                    ? "bg-black hover:bg-gray-800"
                     : "bg-gray-400 cursor-not-allowed"
                 }`}
               >
@@ -214,11 +225,9 @@ export default function CareersClient() {
             </form>
 
           </div>
-
         </div>
 
       </section>
-
     </main>
   );
 }
