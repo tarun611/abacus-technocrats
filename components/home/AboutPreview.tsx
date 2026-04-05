@@ -1,8 +1,8 @@
 export default function AboutPreview() {
   return (
-    <section className="py-20 bg-white">
+    <section className="pt-6 pb-12 md:pb-20 bg-white">
       
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         
         {/* IMAGE */}
         <div>

@@ -3,8 +3,8 @@ export default function MasterPlanningPage() {
     <main className="pt-[70px]">
 
       {/* HERO */}
-      <section className="bg-[#0A1F44] text-white py-20 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold">
+      <section className="bg-[#0A1F44] text-white pt-6 pb-12 md:pb-20 text-center">
+        <h1 className="text-3xl md:text-5xl font-bold">
           Master Planning
         </h1>
         <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
@@ -14,8 +14,8 @@ export default function MasterPlanningPage() {
       </section>
 
       {/* INTRO */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <section className="pt-6 pb-12 md:pb-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
           <div>
             <h2 className="text-3xl font-bold text-[#0A1F44]">
@@ -46,14 +46,14 @@ export default function MasterPlanningPage() {
       </section>
 
       {/* SERVICES SCOPE */}
-      <section className="py-20 bg-gray-50">
+      <section className="pt-6 pb-12 md:pb-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
 
           <h2 className="text-3xl font-bold text-[#0A1F44] text-center">
             Scope of Services
           </h2>
 
-          <div className="mt-12 grid md:grid-cols-2 gap-8 text-gray-600">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-600">
 
             <p>✔ Land Use Planning & Zoning</p>
             <p>✔ Infrastructure Planning (Roads, Utilities)</p>
@@ -68,7 +68,7 @@ export default function MasterPlanningPage() {
       </section>
 
       {/* PROJECT EXPERIENCE */}
-      <section className="py-20 bg-white">
+      <section className="pt-6 pb-12 md:pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
 
           <h2 className="text-3xl font-bold text-[#0A1F44] text-center">
@@ -94,7 +94,7 @@ export default function MasterPlanningPage() {
       </section>
 
       {/* PROCESS */}
-      <section className="py-20 bg-gray-50">
+      <section className="pt-6 pb-12 md:pb-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-6 text-center">
 
           <h2 className="text-3xl font-bold text-[#0A1F44]">

@@ -29,7 +29,7 @@ export default function ServicesPage() {
 
       {/* HERO */}
       <section className="bg-[#F8F5F0] pt-6 pb-20 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#2B2B2B]">
+        <h1 className="text-3xl md:text-5xl font-bold text-[#2B2B2B]">
           Our Services
         </h1>
         <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
@@ -39,8 +39,8 @@ export default function ServicesPage() {
       </section>
 
       {/* SERVICES GRID */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+      <section className="pt-6 pb-12 md:pb-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10">
 
           {services.map((service, index) => (
             <Link href={service.link} key={index}>
@@ -68,14 +68,14 @@ export default function ServicesPage() {
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="py-20 bg-[#F8F5F0]">
+      <section className="pt-6 pb-12 md:pb-20 bg-[#F8F5F0]">
         <div className="max-w-5xl mx-auto px-6 text-center">
 
           <h2 className="text-3xl font-bold text-[#2B2B2B]">
             Why Choose Us
           </h2>
 
-          <div className="mt-10 grid md:grid-cols-2 gap-6">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
 
             {[
               "Integrated end-to-end consultancy services",

@@ -3,8 +3,8 @@ export default function DesignConsultancyPage() {
     <main className="pt-[70px]">
 
       {/* HERO */}
-      <section className="bg-[#0A1F44] text-white py-20 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold">
+      <section className="bg-[#0A1F44] text-white pt-6 pb-12 md:pb-20 text-center">
+        <h1 className="text-3xl md:text-5xl font-bold">
           Design Consultancy
         </h1>
         <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
@@ -14,8 +14,8 @@ export default function DesignConsultancyPage() {
       </section>
 
       {/* INTRO */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <section className="pt-6 pb-12 md:pb-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
           <div>
             <h2 className="text-3xl font-bold text-[#0A1F44]">
@@ -47,14 +47,14 @@ export default function DesignConsultancyPage() {
       </section>
 
       {/* CORE SERVICES */}
-      <section className="py-20 bg-gray-50">
+      <section className="pt-6 pb-12 md:pb-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
 
           <h2 className="text-3xl font-bold text-[#0A1F44] text-center">
             Our Design Services
           </h2>
 
-          <div className="mt-12 grid md:grid-cols-2 gap-8">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
 
             {/* ARCHITECTURE */}
             <div className="p-6 bg-white rounded-lg shadow">
@@ -117,7 +117,7 @@ export default function DesignConsultancyPage() {
       </section>
 
       {/* PROJECT EXPERIENCE */}
-      <section className="py-20 bg-white">
+      <section className="pt-6 pb-12 md:pb-20 bg-white">
         <div className="max-w-5xl mx-auto px-6 text-center">
 
           <h2 className="text-3xl font-bold text-[#0A1F44]">
@@ -140,7 +140,7 @@ export default function DesignConsultancyPage() {
       </section>
 
       {/* APPROACH */}
-      <section className="py-20 bg-gray-50">
+      <section className="pt-6 pb-12 md:pb-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-6 text-center">
 
           <h2 className="text-3xl font-bold text-[#0A1F44]">

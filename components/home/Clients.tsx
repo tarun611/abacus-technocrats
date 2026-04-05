@@ -1,6 +1,6 @@
 export default function Clients() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="pt-6 pb-12 md:pb-20 bg-gray-50">
 
       <div className="max-w-7xl mx-auto px-6 text-center">
 

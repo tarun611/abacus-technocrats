@@ -1,6 +1,6 @@
 export default function CareerHero() {
   return (
-    <section className="py-20 bg-gray-100 text-center">
+    <section className="pt-6 pb-12 md:pb-20 bg-gray-100 text-center">
       <h1 className="text-4xl font-bold mb-4">
         Build Your Career With Us
       </h1>

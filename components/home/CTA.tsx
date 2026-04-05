@@ -1,6 +1,6 @@
 export default function CTA() {
   return (
-    <section className="relative py-20">
+    <section className="relative pt-6 pb-12 md:pb-20">
 
       {/* BACKGROUND */}
       <div className="absolute inset-0">

@@ -30,7 +30,7 @@ export default function ProjectsPage() {
 
       {/* HERO */}
       <section className="bg-[#F8F5F0] pt-6 pb-20 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#2B2B2B]">
+        <h1 className="text-3xl md:text-5xl font-bold text-[#2B2B2B]">
           Our Projects
         </h1>
 
@@ -61,8 +61,8 @@ export default function ProjectsPage() {
       </section>
 
       {/* PROJECT GRID */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <section className="pt-6 pb-12 md:pb-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
           {filteredProjects.map((project) => (
             <ProjectCard key={project.slug} project={project} />

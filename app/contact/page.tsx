@@ -81,7 +81,7 @@ export default function ContactPage() {
 
         {/* HERO */}
         <section className="bg-[#F8F5F0] pt-6 pb-20 text-center">
-          <h1 className="text-4xl md:text-5xl font-semibold text-[#2B2B2B]">
+          <h1 className="text-3xl md:text-5xl font-semibold text-[#2B2B2B]">
             Contact Us
           </h1>
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
@@ -90,8 +90,8 @@ export default function ContactPage() {
         </section>
 
         {/* CONTENT */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+        <section className="pt-6 pb-12 md:pb-20 bg-white">
+          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
 
             {/* LEFT */}
             <div>

@@ -29,7 +29,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="py-20 bg-light">
+    <section className="pt-6 pb-12 md:pb-20 bg-light">
       
       <div className="max-w-7xl mx-auto px-6 text-center">
         
@@ -45,7 +45,7 @@ export default function Services() {
         </p>
 
         {/* GRID */}
-        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           
           {services.map((service, index) => (
             <Link href={service.link} key={index}>

@@ -5,7 +5,7 @@ export default function AboutPage() {
       {/* HERO SECTION */}
       <section className="bg-[#F8F5F0] pt-6 pb-20">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#2B2B2B]">
+          <h1 className="text-3xl md:text-5xl font-bold text-[#2B2B2B]">
             About Abacus Technocrats
           </h1>
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
@@ -16,8 +16,8 @@ export default function AboutPage() {
       </section>
 
       {/* COMPANY INTRO */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <section className="pt-6 pb-12 md:pb-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
           <div>
             <h2 className="text-3xl font-bold text-[#2B2B2B]">
@@ -49,7 +49,7 @@ export default function AboutPage() {
       </section>
 
       {/* EXPERIENCE */}
-      <section className="py-20 bg-[#F8F5F0]">
+      <section className="pt-6 pb-12 md:pb-20 bg-[#F8F5F0]">
         <div className="max-w-7xl mx-auto px-6 text-center">
 
           <h2 className="text-3xl font-bold text-[#2B2B2B]">
@@ -76,14 +76,14 @@ export default function AboutPage() {
       </section>
 
       {/* EXPERTISE */}
-      <section className="py-20 bg-white">
+      <section className="pt-6 pb-12 md:pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
 
           <h2 className="text-3xl font-bold text-[#2B2B2B] text-center">
             Our Expertise
           </h2>
 
-          <div className="mt-12 grid md:grid-cols-2 gap-8">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
 
             {[
               {
@@ -119,7 +119,7 @@ export default function AboutPage() {
       </section>
 
       {/* APPROACH */}
-      <section className="py-20 bg-[#F8F5F0]">
+      <section className="pt-6 pb-12 md:pb-20 bg-[#F8F5F0]">
         <div className="max-w-5xl mx-auto px-6 text-center">
 
           <h2 className="text-3xl font-bold text-[#2B2B2B]">

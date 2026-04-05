@@ -131,7 +131,7 @@ export default function CareersClient() {
       </section>
 
       {/* MAIN GRID */}
-      <section className="py-16 px-6 max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
+      <section className="py-16 px-6 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
 
         {/* LEFT */}
         <div className="md:col-span-2 space-y-12">

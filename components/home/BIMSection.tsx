@@ -1,8 +1,8 @@
 export default function BIMSection() {
   return (
-    <section className="py-20 bg-[#0A1F44] text-white">
+    <section className="pt-6 pb-12 md:pb-20 bg-[#0A1F44] text-white">
 
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
         {/* CONTENT */}
         <div>
