@@ -1,9 +1,41 @@
 export default function ClientsPage() {
+  const logos = [
+    "adani.png",
+    "agp.png",
+    "ayurvedik.png",
+    "client2.png",
+    "germi.png",
+    "gspc.png",
+    "gspl.png",
+    "gujarat-gas.png",
+    "mahanagargas.png",
+    "piu.png",
+    "reliance.png", // ⚠️ must exist
+    "rnb.png",
+    "tcgl.png",
+  ];
+
+  const clients = [
+    "Adani Group",
+    "AG&P",
+    "Ayurvedik Department",
+    "MCX (Multi Commodity Exchange)",
+    "Gujarat Energy Research & Management Institute (GERMI)",
+    "GSPC (Gujarat State Petroleum Corporation)",
+    "GSPL (Gujarat State Petronet Limited)",
+    "Gujarat Gas Limited",
+    "Mahanagar Gas Limited",
+    "PIU - Govt. of Gujarat",
+    "Reliance Industries Limited",
+    "Road & Building Department, Govt. of Gujarat",
+    "Tourism Corporation of Gujarat Limited (TCGL)",
+  ];
+
   return (
     <main>
 
       {/* HERO */}
-      <section className="bg-[#F8F5F0] pt-6 pb-20 text-center">
+      <section className="bg-[#F8F5F0] pt-6 pb-12 md:pb-20 text-center">
         <h1 className="text-3xl md:text-5xl font-bold text-[#2B2B2B]">
           Our Clients
         </h1>
@@ -13,29 +45,20 @@ export default function ClientsPage() {
       </section>
 
       {/* CLIENT LOGOS */}
-      <section className="pt-6 pb-12 md:pb-20 bg-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 md:gap-8">
 
-            {[
-              "/images/logos/germi.png",
-              "/images/logos/gujarat-gas.png",
-              "/images/logos/adani.png",
-              "/images/logos/tcgl.png",
-              "/images/logos/gujarat-university.png",
-              "/images/logos/rnb.png",
-              "/images/logos/govt-gujarat.png",
-              "/images/logos/private.png",
-            ].map((logo, i) => (
+            {logos.map((logo, i) => (
               <div
                 key={i}
-                className="flex items-center justify-center p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition"
+                className="flex items-center justify-center p-5 md:p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition"
               >
                 <img
-                  src={logo}
-                  className="h-14 object-contain grayscale hover:grayscale-0 transition duration-300"
-                  alt="client"
+                  src={`/images/logos/${logo}`}
+                  alt={logo}
+                  className="h-10 md:h-12 w-full object-contain mx-auto grayscale hover:grayscale-0 transition duration-300"
                 />
               </div>
             ))}
@@ -46,7 +69,7 @@ export default function ClientsPage() {
       </section>
 
       {/* CLIENT LIST */}
-      <section className="pt-6 pb-12 md:pb-20 bg-[#F8F5F0]">
+      <section className="py-16 md:py-20 bg-[#F8F5F0]">
         <div className="max-w-5xl mx-auto px-6 text-center">
 
           <h2 className="text-3xl font-bold text-[#2B2B2B]">
@@ -55,16 +78,7 @@ export default function ClientsPage() {
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            {[
-              "Gujarat Energy Research & Management Institute (GERMI)",
-              "Gujarat Gas Limited",
-              "Adani Total Gas Limited",
-              "Tourism Corporation of Gujarat Limited (TCGL)",
-              "Gujarat University",
-              "Road & Building Department, Govt. of Gujarat",
-              "Various Government Departments",
-              "Private Sector Clients",
-            ].map((item, i) => (
+            {clients.map((item, i) => (
               <div
                 key={i}
                 className="p-5 bg-white rounded-xl shadow-sm border border-gray-100 text-gray-600"
@@ -78,8 +92,8 @@ export default function ClientsPage() {
         </div>
       </section>
 
-      {/* TRUST STATEMENT */}
-      <section className="pt-6 pb-12 md:pb-20 bg-white text-center">
+      {/* TRUST */}
+      <section className="py-16 md:py-20 bg-white text-center">
         <div className="max-w-3xl mx-auto px-6">
 
           <h2 className="text-3xl font-bold text-[#2B2B2B]">
@@ -88,8 +102,7 @@ export default function ClientsPage() {
 
           <p className="mt-6 text-gray-600 leading-relaxed">
             Our client relationships are built on trust, quality delivery, and
-            consistent performance. We strive to exceed expectations and deliver
-            value in every project we undertake.
+            consistent performance.
           </p>
 
         </div>
