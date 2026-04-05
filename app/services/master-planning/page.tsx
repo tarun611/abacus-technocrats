@@ -1,24 +1,24 @@
 export default function MasterPlanningPage() {
   return (
-    <main className="pt-[70px]">
+    <main>
 
       {/* HERO */}
-      <section className="bg-[#0A1F44] text-white pt-6 pb-12 md:pb-20 text-center">
-        <h1 className="text-3xl md:text-5xl font-bold">
+      <section className="bg-[#F8F5F0] pt-6 pb-12 md:pb-20 text-center">
+        <h1 className="text-3xl md:text-5xl font-bold text-[#2B2B2B]">
           Master Planning
         </h1>
-        <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
+        <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
           Strategic planning solutions for large-scale developments including
           townships, institutional campuses, and infrastructure projects.
         </p>
       </section>
 
       {/* INTRO */}
-      <section className="pt-6 pb-12 md:pb-20 bg-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
           <div>
-            <h2 className="text-3xl font-bold text-[#0A1F44]">
+            <h2 className="text-3xl font-bold text-[#2B2B2B]">
               Comprehensive Planning Solutions
             </h2>
 
@@ -38,7 +38,7 @@ export default function MasterPlanningPage() {
             <img
               src="/images/services/master.jpg"
               alt="Master Planning"
-              className="w-full h-[400px] object-cover rounded-lg shadow-lg"
+              className="w-full h-[400px] object-cover rounded-2xl shadow-md"
             />
           </div>
 
@@ -46,21 +46,30 @@ export default function MasterPlanningPage() {
       </section>
 
       {/* SERVICES SCOPE */}
-      <section className="pt-6 pb-12 md:pb-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-[#F8F5F0]">
         <div className="max-w-7xl mx-auto px-6">
 
-          <h2 className="text-3xl font-bold text-[#0A1F44] text-center">
+          <h2 className="text-3xl font-bold text-[#2B2B2B] text-center">
             Scope of Services
           </h2>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-600">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            <p>✔ Land Use Planning & Zoning</p>
-            <p>✔ Infrastructure Planning (Roads, Utilities)</p>
-            <p>✔ Campus & Township Planning</p>
-            <p>✔ Urban Development Strategies</p>
-            <p>✔ Environmental & Sustainability Considerations</p>
-            <p>✔ Site Layout Optimization</p>
+            {[
+              "Land Use Planning & Zoning",
+              "Infrastructure Planning (Roads, Utilities)",
+              "Campus & Township Planning",
+              "Urban Development Strategies",
+              "Environmental & Sustainability Considerations",
+              "Site Layout Optimization",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-5 bg-white rounded-xl border border-gray-100 text-gray-600 shadow-sm"
+              >
+                ✔ {item}
+              </div>
+            ))}
 
           </div>
 
@@ -68,10 +77,10 @@ export default function MasterPlanningPage() {
       </section>
 
       {/* PROJECT EXPERIENCE */}
-      <section className="pt-6 pb-12 md:pb-20 bg-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
 
-          <h2 className="text-3xl font-bold text-[#0A1F44] text-center">
+          <h2 className="text-3xl font-bold text-[#2B2B2B] text-center">
             Project Experience
           </h2>
 
@@ -94,20 +103,29 @@ export default function MasterPlanningPage() {
       </section>
 
       {/* PROCESS */}
-      <section className="pt-6 pb-12 md:pb-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-[#F8F5F0]">
         <div className="max-w-5xl mx-auto px-6 text-center">
 
-          <h2 className="text-3xl font-bold text-[#0A1F44]">
+          <h2 className="text-3xl font-bold text-[#2B2B2B]">
             Our Planning Approach
           </h2>
 
-          <div className="mt-10 space-y-4 text-gray-600">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-5 gap-4 text-gray-600">
 
-            <p>1. Site Analysis & Feasibility Study</p>
-            <p>2. Conceptual Planning & Zoning</p>
-            <p>3. Infrastructure Integration</p>
-            <p>4. Detailed Master Plan Development</p>
-            <p>5. Implementation Strategy</p>
+            {[
+              "Site Analysis & Feasibility Study",
+              "Conceptual Planning & Zoning",
+              "Infrastructure Integration",
+              "Detailed Master Plan Development",
+              "Implementation Strategy",
+            ].map((step, i) => (
+              <div
+                key={i}
+                className="p-4 bg-white rounded-lg shadow-sm border border-gray-100"
+              >
+                {step}
+              </div>
+            ))}
 
           </div>
 

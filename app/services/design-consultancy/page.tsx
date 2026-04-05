@@ -1,24 +1,24 @@
 export default function DesignConsultancyPage() {
   return (
-    <main className="pt-[70px]">
+    <main>
 
       {/* HERO */}
-      <section className="bg-[#0A1F44] text-white pt-6 pb-12 md:pb-20 text-center">
-        <h1 className="text-3xl md:text-5xl font-bold">
+      <section className="bg-[#F8F5F0] pt-6 pb-12 md:pb-20 text-center">
+        <h1 className="text-3xl md:text-5xl font-bold text-[#2B2B2B]">
           Design Consultancy
         </h1>
-        <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
+        <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
           Comprehensive architectural, structural, and MEP design solutions
           for technically complex projects across sectors.
         </p>
       </section>
 
       {/* INTRO */}
-      <section className="pt-6 pb-12 md:pb-20 bg-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
           <div>
-            <h2 className="text-3xl font-bold text-[#0A1F44]">
+            <h2 className="text-3xl font-bold text-[#2B2B2B]">
               Integrated Design Expertise
             </h2>
 
@@ -39,7 +39,7 @@ export default function DesignConsultancyPage() {
             <img
               src="/images/services/design.jpg"
               alt="Design Consultancy"
-              className="w-full h-[400px] object-cover rounded-lg shadow-lg"
+              className="w-full h-[400px] object-cover rounded-2xl shadow-md"
             />
           </div>
 
@@ -47,69 +47,52 @@ export default function DesignConsultancyPage() {
       </section>
 
       {/* CORE SERVICES */}
-      <section className="pt-6 pb-12 md:pb-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-[#F8F5F0]">
         <div className="max-w-7xl mx-auto px-6">
 
-          <h2 className="text-3xl font-bold text-[#0A1F44] text-center">
+          <h2 className="text-3xl font-bold text-[#2B2B2B] text-center">
             Our Design Services
           </h2>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            {/* ARCHITECTURE */}
-            <div className="p-6 bg-white rounded-lg shadow">
-              <h3 className="text-xl font-semibold text-[#0A1F44]">
-                Architectural & Interior Design
-              </h3>
-              <p className="mt-3 text-gray-600">
-                Concept development, space planning, façade design, and interior
-                solutions for functional and aesthetic excellence.
-              </p>
-            </div>
-
-            {/* STRUCTURE */}
-            <div className="p-6 bg-white rounded-lg shadow">
-              <h3 className="text-xl font-semibold text-[#0A1F44]">
-                Structural Design
-              </h3>
-              <p className="mt-3 text-gray-600">
-                Safe and efficient structural systems designed for durability,
-                performance, and compliance with engineering standards.
-              </p>
-            </div>
-
-            {/* ELECTRICAL */}
-            <div className="p-6 bg-white rounded-lg shadow">
-              <h3 className="text-xl font-semibold text-[#0A1F44]">
-                Electrical & ELV Design
-              </h3>
-              <p className="mt-3 text-gray-600">
-                HT/LT systems, lighting, power distribution, networking,
-                CCTV, fire alarm, and automation systems.
-              </p>
-            </div>
-
-            {/* PLUMBING */}
-            <div className="p-6 bg-white rounded-lg shadow">
-              <h3 className="text-xl font-semibold text-[#0A1F44]">
-                Plumbing & Fire Fighting
-              </h3>
-              <p className="mt-3 text-gray-600">
-                Water supply systems, drainage networks, rainwater systems,
-                and fire protection design solutions.
-              </p>
-            </div>
-
-            {/* HVAC */}
-            <div className="p-6 bg-white rounded-lg shadow md:col-span-2">
-              <h3 className="text-xl font-semibold text-[#0A1F44]">
-                HVAC Design
-              </h3>
-              <p className="mt-3 text-gray-600">
-                Ventilation, air conditioning systems, ducting, and energy-efficient
-                climate control solutions for all building types.
-              </p>
-            </div>
+            {[
+              {
+                title: "Architectural & Interior Design",
+                desc: "Concept development, space planning, façade design, and interior solutions for functional and aesthetic excellence.",
+              },
+              {
+                title: "Structural Design",
+                desc: "Safe and efficient structural systems designed for durability, performance, and compliance with engineering standards.",
+              },
+              {
+                title: "Electrical & ELV Design",
+                desc: "HT/LT systems, lighting, power distribution, networking, CCTV, fire alarm, and automation systems.",
+              },
+              {
+                title: "Plumbing & Fire Fighting",
+                desc: "Water supply systems, drainage networks, rainwater systems, and fire protection design solutions.",
+              },
+              {
+                title: "HVAC Design",
+                desc: "Ventilation, air conditioning systems, ducting, and energy-efficient climate control solutions.",
+                full: true,
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className={`p-6 bg-white rounded-xl border border-gray-100 shadow-sm ${
+                  item.full ? "md:col-span-2" : ""
+                }`}
+              >
+                <h3 className="text-lg font-semibold text-[#2B2B2B]">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-gray-600">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
 
           </div>
 
@@ -117,10 +100,10 @@ export default function DesignConsultancyPage() {
       </section>
 
       {/* PROJECT EXPERIENCE */}
-      <section className="pt-6 pb-12 md:pb-20 bg-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-6 text-center">
 
-          <h2 className="text-3xl font-bold text-[#0A1F44]">
+          <h2 className="text-3xl font-bold text-[#2B2B2B]">
             Project Experience
           </h2>
 
@@ -140,20 +123,29 @@ export default function DesignConsultancyPage() {
       </section>
 
       {/* APPROACH */}
-      <section className="pt-6 pb-12 md:pb-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-[#F8F5F0]">
         <div className="max-w-5xl mx-auto px-6 text-center">
 
-          <h2 className="text-3xl font-bold text-[#0A1F44]">
+          <h2 className="text-3xl font-bold text-[#2B2B2B]">
             Our Design Approach
           </h2>
 
-          <div className="mt-10 space-y-4 text-gray-600">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-5 gap-4 text-gray-600">
 
-            <p>1. Understanding Client Requirements</p>
-            <p>2. Concept & Preliminary Design</p>
-            <p>3. Detailed Engineering & Drawings</p>
-            <p>4. Interdisciplinary Coordination</p>
-            <p>5. Cost Optimization & Value Engineering</p>
+            {[
+              "Understanding Client Requirements",
+              "Concept & Preliminary Design",
+              "Detailed Engineering & Drawings",
+              "Interdisciplinary Coordination",
+              "Cost Optimization & Value Engineering",
+            ].map((step, i) => (
+              <div
+                key={i}
+                className="p-4 bg-white rounded-lg shadow-sm border border-gray-100"
+              >
+                {step}
+              </div>
+            ))}
 
           </div>
 
