@@ -1,60 +1,47 @@
-import nodemailer from "nodemailer";
-import { connectDB } from "@/lib/mongodb";
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const contentType = req.headers.get("content-type");
+    // ✅ Lazy import (kept as it is - good for Vercel)
+    const nodemailer = (await import("nodemailer")).default;
 
-    // ✅ ENV CHECK
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !process.env.EMAIL_TO) {
-      return Response.json(
-        { success: false, error: "Email configuration missing" },
+    const EMAIL_USER = process.env.EMAIL_USER;
+    const EMAIL_PASS = process.env.EMAIL_PASS;
+    const EMAIL_TO = process.env.EMAIL_TO;
+
+    if (!EMAIL_USER || !EMAIL_PASS || !EMAIL_TO) {
+      return NextResponse.json(
+        { error: "Email config missing" },
         { status: 500 }
       );
     }
 
-    // ✅ MAIL TRANSPORTER
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: EMAIL_USER,
+        pass: EMAIL_PASS,
       },
     });
 
-    // =====================================================
-    // ✅ CONTACT FORM (JSON)
-    // =====================================================
-    if (contentType?.includes("application/json")) {
-      const body = await req.json();
+    const contentType = req.headers.get("content-type") || "";
 
-      const { name, email, phone, message } = body;
+    // ================= CONTACT =================
+    if (contentType.includes("application/json")) {
+      const { name, email, phone, message } = await req.json();
 
-      if (!name || !email || !phone || !message) {
-        return Response.json(
-          { success: false, error: "All fields are required" },
-          { status: 400 }
-        );
-      }
+      // ❌ MongoDB REMOVED
+      // Only send email
 
-      // ✅ SAVE TO DB
-      const db = await connectDB();
-
-      await db.collection("contacts").insertOne({
-        name,
-        email,
-        phone,
-        message,
-        createdAt: new Date(),
-      });
-
-      // ✅ SEND EMAIL
       await transporter.sendMail({
-        from: `"Contact Form" <${process.env.EMAIL_USER}>`,
-        to: process.env.EMAIL_TO,
-        subject: "New Contact Inquiry",
+        from: EMAIL_USER,
+        to: EMAIL_TO,
+        subject: "New Contact Form Submission",
         html: `
-          <h2>New Contact Message</h2>
+          <h2>New Contact Request</h2>
           <p><b>Name:</b> ${name}</p>
           <p><b>Email:</b> ${email}</p>
           <p><b>Phone:</b> ${phone}</p>
@@ -62,12 +49,10 @@ export async function POST(req: Request) {
         `,
       });
 
-      return Response.json({ success: true });
+      return NextResponse.json({ success: true });
     }
 
-    // =====================================================
-    // ✅ CAREERS FORM (FORMDATA)
-    // =====================================================
+    // ================= CAREERS =================
     const formData = await req.formData();
 
     const name = formData.get("name")?.toString();
@@ -76,31 +61,14 @@ export async function POST(req: Request) {
     const position = formData.get("position")?.toString();
     const resume = formData.get("resume") as File | null;
 
-    if (!name || !email || !phone || !position || !resume) {
-      return Response.json(
-        { success: false, error: "All fields are required" },
-        { status: 400 }
-      );
-    }
+    const buffer = resume ? Buffer.from(await resume.arrayBuffer()) : null;
 
-    const buffer = Buffer.from(await resume.arrayBuffer());
+    // ❌ MongoDB REMOVED
+    // Only send email
 
-    // ✅ SAVE TO DB
-    const db = await connectDB();
-
-    await db.collection("applications").insertOne({
-      name,
-      email,
-      phone,
-      position,
-      resumeName: resume.name,
-      createdAt: new Date(),
-    });
-
-    // ✅ SEND EMAIL WITH ATTACHMENT
     await transporter.sendMail({
-      from: `"Careers Form" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_TO,
+      from: EMAIL_USER,
+      to: EMAIL_TO,
       subject: `Job Application - ${position}`,
       html: `
         <h2>New Job Application</h2>
@@ -109,25 +77,20 @@ export async function POST(req: Request) {
         <p><b>Phone:</b> ${phone}</p>
         <p><b>Position:</b> ${position}</p>
       `,
-      attachments: [
-        {
-          filename: resume.name,
-          content: buffer,
-        },
-      ],
+      attachments: resume
+        ? [
+            {
+              filename: resume.name,
+              content: buffer!,
+            },
+          ]
+        : [],
     });
 
-    return Response.json({ success: true });
+    return NextResponse.json({ success: true });
 
-  } catch (error: any) {
-    console.error("API ERROR:", error);
-
-    return Response.json(
-      {
-        success: false,
-        error: error?.message || "Something went wrong",
-      },
-      { status: 500 }
-    );
+  } catch (err: any) {
+    console.error("API ERROR:", err);
+    return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }

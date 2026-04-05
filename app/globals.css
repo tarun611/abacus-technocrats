@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
+/* ROOT COLORS */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
 
-@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* BODY */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* INPUT FOCUS (BRAND GREEN) */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #8A9B88;
+  border-color: #8A9B88;
+}
+
+/* =========================================
+   HEXAGON SHAPE (FOR LOADER)
+========================================= */
+.clip-hex {
+  clip-path: polygon(
+    25% 5%, 
+    75% 5%, 
+    100% 50%, 
+    75% 95%, 
+    25% 95%, 
+    0% 50%
+  );
+}
+
+/* =========================================
+   PREMIUM FLOWING ANIMATION (VISIBLE)
+========================================= */
+@keyframes hexFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-hex-flow {
+  background-size: 200% 200%;
+  animation: hexFlow 2.5s ease-in-out infinite;
+}
+/* PREMIUM LIGHT SWEEP ANIMATION */
+@keyframes hexSlide {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.animate-hex-slide {
+  animation: hexSlide 1.6s ease-in-out infinite;
 }

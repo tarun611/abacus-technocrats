@@ -21,14 +21,12 @@ export default function CareersClient() {
       ?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // ✅ STRICT FILE VALIDATION
+  // FILE VALIDATION
   const handleFileChange = (e: any) => {
     const selectedFile = e.target.files?.[0];
-
     if (!selectedFile) return;
 
     const fileName = selectedFile.name.toLowerCase();
-
     const allowedExtensions = [".pdf", ".doc", ".docx"];
 
     const isValidExtension = allowedExtensions.some((ext) =>
@@ -45,7 +43,7 @@ export default function CareersClient() {
       return;
     }
 
-    const MAX_SIZE = 2 * 1024 * 1024; // 2MB
+    const MAX_SIZE = 2 * 1024 * 1024;
 
     if (selectedFile.size > MAX_SIZE) {
       setStatus({
@@ -91,7 +89,7 @@ export default function CareersClient() {
           message: "Application submitted successfully!",
         });
 
-        formRef.current?.reset(); // ✅ SAFE RESET
+        formRef.current?.reset();
         setSelectedPosition("");
         setPhone("");
         setFile(null);
@@ -119,13 +117,13 @@ export default function CareersClient() {
     <main>
 
       {/* HERO */}
-      <section className="bg-gray-900 pb-20 pt-6">
+      <section className="bg-[#F8F5F0] pt-6 pb-20">
         <div className="max-w-7xl mx-auto px-6">
-          <h1 className="text-3xl md:text-4xl font-semibold text-white">
+          <h1 className="text-3xl md:text-4xl font-semibold text-[#2B2B2B]">
             Careers at Abacus Technocrats Pvt. Ltd.
           </h1>
 
-          <p className="mt-4 max-w-3xl text-gray-300">
+          <p className="mt-4 max-w-3xl text-gray-600">
             Join a professional engineering and consultancy environment focused
             on technical excellence and structured delivery.
           </p>
@@ -139,7 +137,7 @@ export default function CareersClient() {
         <div className="md:col-span-2 space-y-12">
 
           <div>
-            <h2 className="text-2xl font-semibold mb-4">
+            <h2 className="text-2xl font-semibold mb-4 text-[#2B2B2B]">
               Working With Us
             </h2>
             <p className="text-gray-600">
@@ -149,7 +147,7 @@ export default function CareersClient() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-6">
+            <h2 className="text-2xl font-semibold mb-6 text-[#2B2B2B]">
               Current Openings
             </h2>
 
@@ -160,12 +158,15 @@ export default function CareersClient() {
                 "Site / PMC Engineer",
                 "Tendering Engineer",
               ].map((job) => (
-                <div key={job} className="border p-6 rounded-lg">
-                  <h3 className="font-semibold">{job}</h3>
+                <div
+                  key={job}
+                  className="p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"
+                >
+                  <h3 className="font-semibold text-[#2B2B2B]">{job}</h3>
 
                   <button
                     onClick={() => handleApplyClick(job)}
-                    className="mt-3 text-sm text-blue-600 hover:underline"
+                    className="mt-3 text-sm text-[#C5A46D] hover:underline"
                   >
                     Apply for this role
                   </button>
@@ -180,13 +181,13 @@ export default function CareersClient() {
         <div className="md:col-span-1">
           <div
             id="apply-form"
-            className="bg-white border rounded-xl p-6 sticky top-24"
+            className="bg-white border border-gray-100 rounded-2xl p-6 sticky top-[90px] shadow-sm"
           >
-            <h2 className="text-xl font-semibold mb-4">
+            <h2 className="text-xl font-semibold mb-4 text-[#2B2B2B]">
               Apply Now
             </h2>
 
-            {/* STATUS MESSAGE */}
+            {/* STATUS */}
             {status.message && (
               <div
                 className={`mb-4 p-3 rounded text-sm ${
@@ -201,27 +202,16 @@ export default function CareersClient() {
 
             <form ref={formRef} onSubmit={handleSubmit} className="grid gap-4 text-sm">
 
-              <input
-                name="name"
-                placeholder="Full Name"
-                className="border p-3 rounded"
-                required
-              />
+              <input name="name" placeholder="Full Name" className="border border-gray-200 p-3 rounded-lg" required />
 
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                className="border p-3 rounded"
-                required
-              />
+              <input type="email" name="email" placeholder="Email" className="border border-gray-200 p-3 rounded-lg" required />
 
               <input
                 name="phone"
                 placeholder="Phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="border p-3 rounded"
+                className="border border-gray-200 p-3 rounded-lg"
                 required
               />
 
@@ -229,23 +219,16 @@ export default function CareersClient() {
                 name="position"
                 value={selectedPosition}
                 onChange={(e) => setSelectedPosition(e.target.value)}
-                className="border p-3 rounded bg-white"
+                className="border border-gray-200 p-3 rounded-lg bg-white"
                 required
               >
                 <option value="">Select Position</option>
-
-                <optgroup label="Engineering">
-                  <option>Planning Engineer</option>
-                  <option>BIM / Revit Modeller</option>
-                  <option>Site / PMC Engineer</option>
-                  <option>Tendering Engineer</option>
-                </optgroup>
-
-                <optgroup label="Drafting">
-                  <option>Draftsman - Structure</option>
-                  <option>Draftsman - Architecture</option>
-                </optgroup>
-
+                <option>Planning Engineer</option>
+                <option>BIM / Revit Modeller</option>
+                <option>Site / PMC Engineer</option>
+                <option>Tendering Engineer</option>
+                <option>Draftsman - Structure</option>
+                <option>Draftsman - Architecture</option>
                 <option>Other</option>
               </select>
 
@@ -260,9 +243,9 @@ export default function CareersClient() {
               <button
                 type="submit"
                 disabled={!phone || phone.length < 10 || !file || loading}
-                className={`py-3 rounded text-white ${
+                className={`py-3 rounded-lg text-white transition ${
                   phone && phone.length >= 10 && file && !loading
-                    ? "bg-black hover:bg-gray-800"
+                    ? "bg-[#2B2B2B] hover:bg-black"
                     : "bg-gray-400 cursor-not-allowed"
                 }`}
               >

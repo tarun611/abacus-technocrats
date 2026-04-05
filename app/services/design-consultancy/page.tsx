@@ -1,6 +1,6 @@
 export default function DesignConsultancyPage() {
   return (
-    <main className="pt-24">
+    <main className="pt-[70px]">
 
       {/* HERO */}
       <section className="bg-[#0A1F44] text-white py-20 text-center">

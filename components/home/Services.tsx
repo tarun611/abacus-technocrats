@@ -29,48 +29,54 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-light">
       
       <div className="max-w-7xl mx-auto px-6 text-center">
         
-        <h2 className="text-3xl font-bold text-[#0A1F44]">
+        {/* HEADING */}
+        <h2 className="text-3xl md:text-4xl font-semibold text-text">
           Our Core Services
         </h2>
 
-        <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+        {/* SUBTEXT */}
+        <p className="mt-4 text-gray-500 max-w-2xl mx-auto leading-relaxed">
           We provide integrated consultancy services covering planning, design,
           execution, and digital construction technologies.
         </p>
 
-        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* GRID */}
+        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           
           {services.map((service, index) => (
             <Link href={service.link} key={index}>
               
-              <div className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition cursor-pointer">
+              <div className="group bg-white rounded-xl overflow-hidden border border-border shadow-sm hover:shadow-md transition duration-300 cursor-pointer">
                 
                 {/* IMAGE */}
                 <div className="overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition duration-300"
+                    className="w-full h-48 object-cover group-hover:scale-105 transition duration-300"
                   />
                 </div>
 
                 {/* CONTENT */}
                 <div className="p-6 text-left">
-                  <h3 className="text-lg font-semibold text-[#0A1F44]">
+                  
+                  <h3 className="text-lg font-semibold text-text">
                     {service.title}
                   </h3>
 
-                  <p className="mt-2 text-sm text-gray-600">
+                  <p className="mt-2 text-sm text-gray-500 leading-relaxed">
                     {service.desc}
                   </p>
 
-                  <span className="inline-block mt-4 text-sm text-[#D4AF37] font-medium">
+                  {/* LINK */}
+                  <span className="inline-block mt-4 text-sm text-primary font-medium group-hover:underline">
                     Explore →
                   </span>
+
                 </div>
 
               </div>

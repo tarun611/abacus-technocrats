@@ -12,15 +12,15 @@ export default async function ProjectDetailPage({
 
   if (!project) {
     return (
-      <main className="pt-24 text-center">
-        <h1 className="text-red-500 text-xl">Project not found</h1>
+      <main className="pt-[70px] text-center">
+        <h1 className="text-red-500 text-xl">project not found</h1>
         <p className="text-gray-500 mt-2">Slug received: {slug}</p>
       </main>
     );
   }
 
   return (
-    <main className="pt-24">
+    <main className="pt-[70px]">
 
       {/* HERO */}
       <section className="bg-[#0A1F44] text-white py-20 text-center">

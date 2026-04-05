@@ -1,14 +1,14 @@
 export default function AboutPage() {
   return (
-    <main className="pt-24">
+    <main className="pt-[70px]">
 
       {/* HERO SECTION */}
-      <section className="bg-[#0A1F44] text-white py-20">
+      <section className="bg-[#F8F5F0] py-20">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#2B2B2B]">
             About Abacus Technocrats
           </h1>
-          <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
+          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
             Delivering engineering excellence since 2004 through integrated planning,
             design, and project management solutions.
           </p>
@@ -20,7 +20,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
           <div>
-            <h2 className="text-3xl font-bold text-[#0A1F44]">
+            <h2 className="text-3xl font-bold text-[#2B2B2B]">
               Who We Are
             </h2>
 
@@ -41,42 +41,34 @@ export default function AboutPage() {
             <img
               src="/images/services/about.jpg"
               alt="About"
-              className="w-full h-[400px] object-cover rounded-lg shadow-lg"
+              className="w-full h-[400px] object-cover rounded-2xl shadow-md"
             />
           </div>
 
         </div>
       </section>
 
-      {/* EXPERIENCE / HIGHLIGHTS */}
-      <section className="py-20 bg-gray-50">
+      {/* EXPERIENCE */}
+      <section className="py-20 bg-[#F8F5F0]">
         <div className="max-w-7xl mx-auto px-6 text-center">
 
-          <h2 className="text-3xl font-bold text-[#0A1F44]">
+          <h2 className="text-3xl font-bold text-[#2B2B2B]">
             Our Experience
           </h2>
 
           <div className="mt-12 grid md:grid-cols-4 gap-8">
 
-            <div>
-              <h3 className="text-3xl font-bold text-[#D4AF37]">20+</h3>
-              <p className="mt-2 text-gray-600">Years Experience</p>
-            </div>
-
-            <div>
-              <h3 className="text-3xl font-bold text-[#D4AF37]">200+</h3>
-              <p className="mt-2 text-gray-600">Projects Delivered</p>
-            </div>
-
-            <div>
-              <h3 className="text-3xl font-bold text-[#D4AF37]">Multi</h3>
-              <p className="mt-2 text-gray-600">Sector Expertise</p>
-            </div>
-
-            <div>
-              <h3 className="text-3xl font-bold text-[#D4AF37]">Pan India</h3>
-              <p className="mt-2 text-gray-600">Project Presence</p>
-            </div>
+            {[
+              { value: "20+", label: "Years Experience" },
+              { value: "200+", label: "Projects Delivered" },
+              { value: "Multi", label: "Sector Expertise" },
+              { value: "Pan India", label: "Project Presence" },
+            ].map((item, i) => (
+              <div key={i} className="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+                <h3 className="text-3xl font-bold text-[#C5A46D]">{item.value}</h3>
+                <p className="mt-2 text-gray-600">{item.label}</p>
+              </div>
+            ))}
 
           </div>
 
@@ -87,47 +79,39 @@ export default function AboutPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
 
-          <h2 className="text-3xl font-bold text-[#0A1F44] text-center">
+          <h2 className="text-3xl font-bold text-[#2B2B2B] text-center">
             Our Expertise
           </h2>
 
           <div className="mt-12 grid md:grid-cols-2 gap-8">
 
-            <div className="p-6 border rounded-lg">
-              <h3 className="font-semibold text-lg text-[#0A1F44]">
-                Institutional Projects
-              </h3>
-              <p className="mt-2 text-gray-600">
-                Hospitals, universities, laboratories, and campus developments.
-              </p>
-            </div>
-
-            <div className="p-6 border rounded-lg">
-              <h3 className="font-semibold text-lg text-[#0A1F44]">
-                Oil & Gas Infrastructure
-              </h3>
-              <p className="mt-2 text-gray-600">
-                CNG, LNG, CGS stations and drill-site infrastructure projects.
-              </p>
-            </div>
-
-            <div className="p-6 border rounded-lg">
-              <h3 className="font-semibold text-lg text-[#0A1F44]">
-                Commercial & Residential
-              </h3>
-              <p className="mt-2 text-gray-600">
-                Township planning, office buildings, and residential developments.
-              </p>
-            </div>
-
-            <div className="p-6 border rounded-lg">
-              <h3 className="font-semibold text-lg text-[#0A1F44]">
-                Government Projects
-              </h3>
-              <p className="mt-2 text-gray-600">
-                Public infrastructure and institutional developments across Gujarat and India.
-              </p>
-            </div>
+            {[
+              {
+                title: "Institutional Projects",
+                desc: "Hospitals, universities, laboratories, and campus developments.",
+              },
+              {
+                title: "Oil & Gas Infrastructure",
+                desc: "CNG, LNG, CGS stations and drill-site infrastructure projects.",
+              },
+              {
+                title: "Commercial & Residential",
+                desc: "Township planning, office buildings, and residential developments.",
+              },
+              {
+                title: "Government Projects",
+                desc: "Public infrastructure and institutional developments across Gujarat and India.",
+              },
+            ].map((item, i) => (
+              <div key={i} className="p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                <h3 className="font-semibold text-lg text-[#2B2B2B]">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-gray-600">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
 
           </div>
 
@@ -135,20 +119,26 @@ export default function AboutPage() {
       </section>
 
       {/* APPROACH */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#F8F5F0]">
         <div className="max-w-5xl mx-auto px-6 text-center">
 
-          <h2 className="text-3xl font-bold text-[#0A1F44]">
+          <h2 className="text-3xl font-bold text-[#2B2B2B]">
             Our Approach
           </h2>
 
-          <div className="mt-10 space-y-4 text-gray-600">
+          <div className="mt-10 grid md:grid-cols-5 gap-4 text-gray-600">
 
-            <p>1. Planning & Feasibility</p>
-            <p>2. Design & Engineering</p>
-            <p>3. Execution & Monitoring</p>
-            <p>4. Quality & Cost Control</p>
-            <p>5. Project Closure & Handover</p>
+            {[
+              "Planning & Feasibility",
+              "Design & Engineering",
+              "Execution & Monitoring",
+              "Quality & Cost Control",
+              "Project Closure & Handover",
+            ].map((step, i) => (
+              <div key={i} className="p-4 bg-white rounded-lg shadow-sm border border-gray-100">
+                {step}
+              </div>
+            ))}
 
           </div>
 

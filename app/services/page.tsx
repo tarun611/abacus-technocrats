@@ -25,14 +25,14 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <main className="pt-24">
+    <main className="pt-[70px]">
 
       {/* HERO */}
-      <section className="bg-[#0A1F44] text-white py-20 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold">
+      <section className="bg-[#F8F5F0] py-20 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-[#2B2B2B]">
           Our Services
         </h1>
-        <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
+        <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
           Delivering integrated consultancy services across planning, design,
           execution, and digital construction technologies.
         </p>
@@ -45,9 +45,9 @@ export default function ServicesPage() {
           {services.map((service, index) => (
             <Link href={service.link} key={index}>
               
-              <div className="border rounded-lg p-8 hover:shadow-xl transition cursor-pointer">
+              <div className="group p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition duration-300 cursor-pointer bg-white">
                 
-                <h2 className="text-2xl font-semibold text-[#0A1F44]">
+                <h2 className="text-2xl font-semibold text-[#2B2B2B] group-hover:text-[#C5A46D] transition">
                   {service.title}
                 </h2>
 
@@ -55,7 +55,7 @@ export default function ServicesPage() {
                   {service.desc}
                 </p>
 
-                <span className="inline-block mt-6 text-[#D4AF37] font-medium">
+                <span className="inline-block mt-6 text-[#C5A46D] font-medium group-hover:translate-x-1 transition">
                   Learn More →
                 </span>
 
@@ -68,21 +68,30 @@ export default function ServicesPage() {
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#F8F5F0]">
         <div className="max-w-5xl mx-auto px-6 text-center">
 
-          <h2 className="text-3xl font-bold text-[#0A1F44]">
+          <h2 className="text-3xl font-bold text-[#2B2B2B]">
             Why Choose Us
           </h2>
 
-          <div className="mt-10 grid md:grid-cols-2 gap-6 text-gray-600">
+          <div className="mt-10 grid md:grid-cols-2 gap-6">
 
-            <p>✔ Integrated end-to-end consultancy services</p>
-            <p>✔ Strong experience in government and institutional projects</p>
-            <p>✔ Expertise in Oil & Gas infrastructure</p>
-            <p>✔ Technology-driven approach with BIM integration</p>
-            <p>✔ Focus on quality, cost, and timely delivery</p>
-            <p>✔ Experienced multidisciplinary engineering team</p>
+            {[
+              "Integrated end-to-end consultancy services",
+              "Strong experience in government and institutional projects",
+              "Expertise in Oil & Gas infrastructure",
+              "Technology-driven approach with BIM integration",
+              "Focus on quality, cost, and timely delivery",
+              "Experienced multidisciplinary engineering team",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-5 bg-white rounded-xl shadow-sm border border-gray-100 text-gray-600"
+              >
+                ✔ {item}
+              </div>
+            ))}
 
           </div>
 

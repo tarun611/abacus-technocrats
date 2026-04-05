@@ -8,14 +8,32 @@ import CTA from "@/components/home/CTA";
 
 export default function Home() {
   return (
-    <>
+    <main className="bg-white">
       <Hero />
-      <AboutPreview />
-      <Services />
-      <Projects />
-      <BIMSection />
-      <Clients />
-      <CTA />
-    </>
+
+      <section className="py-16 md:py-24">
+        <AboutPreview />
+      </section>
+
+      <section className="py-16 md:py-24 bg-light">
+        <Services />
+      </section>
+
+      <section className="py-16 md:py-24">
+        <Projects />
+      </section>
+
+      <section className="py-16 md:py-24 bg-light">
+        <BIMSection />
+      </section>
+
+      <section className="py-16 md:py-24">
+        <Clients />
+      </section>
+
+      <section className="py-16 md:py-24">
+        <CTA />
+      </section>
+    </main>
   );
 }
