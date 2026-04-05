@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import HexLoader from "@/components/HexLoader"; // ✅ ADD THIS
+import HexLoader from "@/components/HexLoader";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -75,28 +75,27 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* ✅ HEX LOADER */}
       {loading && <HexLoader />}
 
       <main>
 
         {/* HERO */}
-        <section className="bg-light py-16 text-center">
-          <h1 className="text-4xl md:text-5xl font-semibold text-text">
+        <section className="bg-[#F8F5F0] pt-6 pb-20 text-center">
+          <h1 className="text-4xl md:text-5xl font-semibold text-[#2B2B2B]">
             Contact Us
           </h1>
-          <p className="mt-4 text-gray-500 max-w-2xl mx-auto">
+          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
             Get in touch with us for planning, design, and project consultancy services.
           </p>
         </section>
 
         {/* CONTENT */}
-        <section className="py-16 bg-white">
+        <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
 
             {/* LEFT */}
             <div>
-              <h2 className="text-xl font-semibold text-text">
+              <h2 className="text-xl font-semibold text-[#2B2B2B]">
                 Office Address
               </h2>
 
@@ -108,7 +107,7 @@ export default function ContactPage() {
                 Ahmedabad – 380006, Gujarat, India
               </p>
 
-              <h2 className="text-xl font-semibold text-text mt-8">
+              <h2 className="text-xl font-semibold text-[#2B2B2B] mt-8">
                 Contact Details
               </h2>
 
@@ -121,11 +120,10 @@ export default function ContactPage() {
 
             {/* FORM */}
             <div>
-              <h2 className="text-xl font-semibold text-text">
+              <h2 className="text-xl font-semibold text-[#2B2B2B]">
                 Send a Message
               </h2>
 
-              {/* STATUS */}
               {status.message && (
                 <div
                   className={`mt-4 p-3 rounded text-sm ${
@@ -146,7 +144,7 @@ export default function ContactPage() {
                   placeholder="Your Name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full border border-border px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C5A46D]"
                   required
                 />
 
@@ -156,7 +154,7 @@ export default function ContactPage() {
                   placeholder="Your Email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full border border-border px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C5A46D]"
                   required
                 />
 
@@ -166,7 +164,7 @@ export default function ContactPage() {
                   placeholder="Phone Number"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full border border-border px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C5A46D]"
                   required
                 />
 
@@ -176,14 +174,14 @@ export default function ContactPage() {
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full border border-border px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C5A46D]"
                   required
                 />
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition shadow-sm"
+                  className="bg-[#C5A46D] text-white px-6 py-3 rounded-lg hover:bg-[#b8965f] transition shadow-md"
                 >
                   {loading ? "Sending..." : "Send Message"}
                 </button>

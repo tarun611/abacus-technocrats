@@ -1,9 +1,9 @@
 export default function AboutPage() {
   return (
-    <main className="pt-[70px]">
+    <main>
 
       {/* HERO SECTION */}
-      <section className="bg-[#F8F5F0] py-20">
+      <section className="bg-[#F8F5F0] pt-6 pb-20">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-[#2B2B2B]">
             About Abacus Technocrats

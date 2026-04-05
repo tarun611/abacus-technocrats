@@ -25,10 +25,10 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <main className="pt-[70px]">
+    <main>
 
       {/* HERO */}
-      <section className="bg-[#F8F5F0] py-20 text-center">
+      <section className="bg-[#F8F5F0] pt-6 pb-20 text-center">
         <h1 className="text-4xl md:text-5xl font-bold text-[#2B2B2B]">
           Our Services
         </h1>
