@@ -1,78 +1,261 @@
 export const projects = [
+  // ================= INSTITUTIONAL =================
   {
-    slug: "germi-building",
-    title: "GERMI Office & Laboratory Building",
-    location: "Gandhinagar, Gujarat",
+    slug: "germi-campus",
+    title: "GERMI Campus Development",
     category: "Institutional",
+    service: ["Design", "PMC"],
     client: "GERMI",
-    year: "2020",
-
-    image: "/images/projects/germi/main.jpg",
-
-    gallery: [
-      "/images/projects/germi/1.jpg",
-      "/images/projects/germi/2.jpg",
-      "/images/projects/germi/3.jpg",
+    location: "Gandhinagar",
+    image: "/images/projects/germi.jpg",
+    images: [
+      "/images/projects/germi.jpg",
+      "/images/projects/germi-2.jpg",
+      "/images/projects/germi-3.jpg",
     ],
-
     description:
-      "Design and execution of a modern institutional facility including office spaces, laboratories, and associated infrastructure. The project required coordination across multiple disciplines ensuring high-quality construction standards.",
-
-    scope: [
-      "Architectural Design",
-      "Interior Design",
-      "MEP Design",
-      "Project Management Consultancy",
-    ],
+      "Main office building and laboratory development including master planning and infrastructure.",
   },
-
-  {
-    slug: "ssg-hospital",
-    title: "SSG Hospital Expansion",
-    location: "Vadodara, Gujarat",
-    category: "Healthcare",
-    client: "Government of Gujarat",
-    year: "2021",
-
-    image: "/images/projects/ssg/main.jpg",
-
-    gallery: [
-      "/images/projects/ssg/1.jpg",
-      "/images/projects/ssg/2.jpg",
-    ],
-
-    description:
-      "Development of large-scale hospital infrastructure including planning, engineering design, and execution management for critical healthcare facilities.",
-
-    scope: [
-      "Master Planning",
-      "Design Consultancy",
-      "PMC Services",
-    ],
-  },
-
   {
     slug: "hngu-campus",
-    title: "HNGU Campus Development",
-    location: "Vadali, Gujarat",
+    title: "HNGU Campus Buildings",
     category: "Institutional",
-    client: "HNGU",
-    year: "2019",
-
-    image: "/images/projects/hngu/main.jpg",
-
-    gallery: [
-      "/images/projects/hngu/1.jpg",
-      "/images/projects/hngu/2.jpg",
+    service: ["Design"],
+    client: "North Gujarat University",
+    location: "Patan / Vadali",
+    image: "/images/projects/hngu.jpg",
+    images: [
+      "/images/projects/hngu.jpg",
+      "/images/projects/hngu-2.jpg",
     ],
-
     description:
-      "Master planning and infrastructure development of a 92-acre university campus including academic buildings, utilities, and site development.",
-
-    scope: [
-      "Master Planning",
-      "Infrastructure Design",
-      "PMC Services",
+      "Development of institutional buildings including academic and campus infrastructure.",
+  },
+  {
+    slug: "ssg-hostel",
+    title: "SSG Hospital Hostels",
+    category: "Institutional",
+    service: ["Design"],
+    client: "Govt.",
+    location: "Vadodara",
+    image: "/images/projects/hostel.jpg",
+    images: [
+      "/images/projects/hostel.jpg",
+      "/images/projects/hostel-2.jpg",
     ],
+    description:
+      "Design of large-scale student hostel facilities within hospital campus.",
+  },
+
+  // ================= OIL & GAS =================
+  {
+    slug: "cng-stations",
+    title: "CNG / LNG Station Network",
+    category: "Oil & Gas",
+    service: ["Design", "PMC"],
+    client: "Gujarat Gas / Adani Gas",
+    location: "Pan India",
+    image: "/images/projects/cng.jpg",
+    images: [
+      "/images/projects/cng.jpg",
+      "/images/projects/cng-2.jpg",
+      "/images/projects/cng-3.jpg",
+    ],
+    description:
+      "Design and execution of multiple CNG, LNG and CGS stations across India.",
+  },
+  {
+    slug: "gas-station-rajkot",
+    title: "Gantheshwar Gas Station",
+    category: "Oil & Gas",
+    service: ["Design"],
+    client: "Gujarat Gas",
+    location: "Rajkot",
+    image: "/images/projects/rajkot-cng.jpg",
+    images: [
+      "/images/projects/rajkot-cng.jpg",
+      "/images/projects/rajkot-cng-2.jpg",
+    ],
+    description:
+      "Design of gas station infrastructure with optimized layout and services.",
+  },
+
+  // ================= PMC =================
+  {
+    slug: "ssg-hospital",
+    title: "500 Bedded Hospital (SSG)",
+    category: "PMC Projects",
+    service: ["PMC"],
+    client: "Govt.",
+    location: "Vadodara",
+    image: "/images/projects/hospital.jpg",
+    images: [
+      "/images/projects/hospital.jpg",
+      "/images/projects/hospital-2.jpg",
+    ],
+    description:
+      "Project management consultancy for large-scale hospital infrastructure.",
+  },
+  {
+    slug: "innovix-hotel",
+    title: "Tata Innovix Hotel",
+    category: "PMC Projects",
+    service: ["PMC"],
+    client: "Innovix",
+    location: "Dholera",
+    image: "/images/projects/hotel.jpg",
+    images: [
+      "/images/projects/hotel.jpg",
+      "/images/projects/hotel-2.jpg",
+    ],
+    description:
+      "PMC services for premium hospitality development project.",
+  },
+
+  // ================= RESIDENTIAL =================
+  {
+    slug: "staff-quarters",
+    title: "Staff Housing Quarters",
+    category: "Residential",
+    service: ["PMC"],
+    client: "Govt.",
+    location: "Gandhinagar",
+    image: "/images/projects/housing.jpg",
+    images: [
+      "/images/projects/housing.jpg",
+      "/images/projects/housing-2.jpg",
+    ],
+    description:
+      "Development of residential housing for government staff.",
+  },
+
+  // ================= EDUCATIONAL =================
+  {
+    slug: "gujarat-university-hostel",
+    title: "Gujarat University Hostel",
+    category: "Educational",
+    service: ["Design", "PMC"],
+    client: "Gujarat University",
+    location: "Ahmedabad",
+    image: "/images/projects/hostel2.jpg",
+    images: [
+      "/images/projects/hostel2.jpg",
+      "/images/projects/hostel2-2.jpg",
+    ],
+    description:
+      "Design and execution of hostel infrastructure for university campus.",
+  },
+  {
+    slug: "apj-center",
+    title: "APJ Abdul Kalam Research Centre",
+    category: "Educational",
+    service: ["Design"],
+    client: "Gujarat University",
+    location: "Ahmedabad",
+    image: "/images/projects/apj.jpg",
+    images: [
+      "/images/projects/apj.jpg",
+      "/images/projects/apj-2.jpg",
+    ],
+    description:
+      "Design of advanced research and academic facility.",
+  },
+
+  // ================= SPORTS =================
+  {
+    slug: "indoor-sports",
+    title: "Indoor Sports Complex",
+    category: "Sports",
+    service: ["Design", "PMC"],
+    client: "Gujarat University",
+    location: "Ahmedabad",
+    image: "/images/projects/sports.jpg",
+    images: [
+      "/images/projects/sports.jpg",
+      "/images/projects/sports-2.jpg",
+    ],
+    description:
+      "Design and development of sports infrastructure including indoor facilities.",
+  },
+  {
+    slug: "athletic-track",
+    title: "Synthetic Athletic Track",
+    category: "Sports",
+    service: ["Design"],
+    client: "Gujarat University",
+    location: "Ahmedabad",
+    image: "/images/projects/track.jpg",
+    images: [
+      "/images/projects/track.jpg",
+      "/images/projects/track-2.jpg",
+    ],
+    description:
+      "Design of professional athletic track facility.",
+  },
+
+  // ================= HOSPITALITY =================
+  {
+    slug: "wayside-amenities",
+    title: "Way Side Amenities",
+    category: "Hospitality",
+    service: ["Design", "PMC"],
+    client: "Tourism Dept.",
+    location: "Sayla",
+    image: "/images/projects/amenities.jpg",
+    images: [
+      "/images/projects/amenities.jpg",
+      "/images/projects/amenities-2.jpg",
+    ],
+    description:
+      "Development of highway amenities and tourism infrastructure.",
+  },
+
+  // ================= RETAIL =================
+  {
+    slug: "reliance-trends",
+    title: "Reliance Trends Store",
+    category: "Retail",
+    service: ["Interior", "PMC"],
+    client: "Reliance",
+    location: "Jamnagar",
+    image: "/images/projects/retail.jpg",
+    images: [
+      "/images/projects/retail.jpg",
+      "/images/projects/retail-2.jpg",
+    ],
+    description:
+      "Interior design and execution of retail store environment.",
+  },
+
+  // ================= SPECIAL =================
+  {
+    slug: "warehouse",
+    title: "Warehouse Development",
+    category: "Special Projects",
+    service: ["PMC"],
+    client: "Kunvarji Group",
+    location: "Unjha",
+    image: "/images/projects/warehouse.jpg",
+    images: [
+      "/images/projects/warehouse.jpg",
+      "/images/projects/warehouse-2.jpg",
+    ],
+    description:
+      "Development of industrial warehouse facilities.",
+  },
+  {
+    slug: "somnath-temple",
+    title: "Somnath Temple Development",
+    category: "Special Projects",
+    service: ["PMC"],
+    client: "Tourism Dept.",
+    location: "Somnath",
+    image: "/images/projects/temple.jpg",
+    images: [
+      "/images/projects/temple.jpg",
+      "/images/projects/temple-2.jpg",
+    ],
+    description:
+      "Development of temple infrastructure and public facilities.",
   },
 ];
